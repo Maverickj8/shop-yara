@@ -9,7 +9,7 @@ import { motion } from 'framer-motion'
 const ADMIN_PASSWORD = 'admin123' // Simple password protection
 
 export default function Admin() {
-  const { products, addProduct, updateProduct, deleteProduct } = useProducts()
+  const { products, addProduct, updateProduct, deleteProduct, allowedCategories } = useProducts()
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [password, setPassword] = useState('')
   const [showAddForm, setShowAddForm] = useState(false)
@@ -20,9 +20,10 @@ export default function Admin() {
     price: '',
     quantity: '',
     image: '',
-    category: '',
+    category: 'Fragrance',
     specifications: '',
   })
+  const [imagePreview, setImagePreview] = useState('')
 
   useEffect(() => {
     // Check if already authenticated
@@ -55,15 +56,55 @@ export default function Admin() {
     })
   }
 
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0]
+    if (file) {
+      // Validate file type
+      if (!file.type.startsWith('image/')) {
+        alert('Please select an image file')
+        return
+      }
+      
+      // Validate file size (max 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        alert('Image size should be less than 5MB')
+        return
+      }
+
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        const base64String = reader.result
+        setFormData({
+          ...formData,
+          image: base64String,
+        })
+        setImagePreview(base64String)
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
+    
+    // Validate image
+    if (!formData.image && !imagePreview) {
+      alert('Please upload an image or provide an image URL')
+      return
+    }
+
+    // Validate category
+    if (!allowedCategories.includes(formData.category)) {
+      alert('Please select a valid category')
+      return
+    }
     
     const productData = {
       name: formData.name,
       description: formData.description,
       price: parseFloat(formData.price),
       quantity: parseInt(formData.quantity),
-      image: formData.image || 'https://via.placeholder.com/800',
+      image: formData.image || imagePreview || 'https://via.placeholder.com/800',
       category: formData.category,
       specifications: formData.specifications
         ? JSON.parse(formData.specifications)
@@ -84,9 +125,10 @@ export default function Admin() {
       price: '',
       quantity: '',
       image: '',
-      category: '',
+      category: 'Fragrance',
       specifications: '',
     })
+    setImagePreview('')
     setShowAddForm(false)
     alert(editingProduct ? 'Product updated!' : 'Product added!')
   }
@@ -99,9 +141,10 @@ export default function Admin() {
       price: product.price.toString(),
       quantity: product.quantity.toString(),
       image: product.image,
-      category: product.category || '',
+      category: allowedCategories.includes(product.category) ? product.category : 'Fragrance',
       specifications: JSON.stringify(product.specifications || {}, null, 2),
     })
+    setImagePreview(product.image)
     setShowAddForm(true)
   }
 
@@ -191,14 +234,19 @@ export default function Admin() {
                     <label className="block text-gray-700 font-semibold mb-2">
                       Category *
                     </label>
-                    <input
-                      type="text"
+                    <select
                       name="category"
                       value={formData.category}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-gold"
-                    />
+                      className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-gold bg-white"
+                    >
+                      {allowedCategories.map((cat) => (
+                        <option key={cat} value={cat}>
+                          {cat}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                 </div>
                 <div>
@@ -244,17 +292,72 @@ export default function Admin() {
                       className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-gold"
                     />
                   </div>
-                  <div>
-                    <label className="block text-gray-700 font-semibold mb-2">
-                      Image URL
-                    </label>
-                    <input
-                      type="url"
-                      name="image"
-                      value={formData.image}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-gold"
-                    />
+                </div>
+                {/* Image Upload Section */}
+                <div>
+                  <label className="block text-gray-700 font-semibold mb-2">
+                    Product Image *
+                  </label>
+                  <div className="space-y-4">
+                    {/* Image Upload */}
+                    <div>
+                      <label className="block text-sm text-gray-600 mb-2">
+                        Upload Image (Max 5MB)
+                      </label>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                        className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-gold file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-gray-900 file:text-white hover:file:bg-gold file:cursor-pointer"
+                      />
+                    </div>
+                    {/* Or Image URL */}
+                    <div>
+                      <label className="block text-sm text-gray-600 mb-2">
+                        Or Enter Image URL
+                      </label>
+                      <input
+                        type="url"
+                        name="image"
+                        value={formData.image}
+                        onChange={(e) => {
+                          handleInputChange(e)
+                          if (e.target.value) {
+                            setImagePreview(e.target.value)
+                          }
+                        }}
+                        placeholder="https://example.com/image.jpg"
+                        className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-gold"
+                      />
+                    </div>
+                    {/* Image Preview */}
+                    {(imagePreview || formData.image) && (
+                      <div className="mt-4">
+                        <label className="block text-sm text-gray-600 mb-2">
+                          Preview
+                        </label>
+                        <div className="relative w-full max-w-md h-64 border-2 border-gray-300 rounded-lg overflow-hidden">
+                          <img
+                            src={imagePreview || formData.image}
+                            alt="Product preview"
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              e.target.src = 'https://via.placeholder.com/800?text=Invalid+Image'
+                            }}
+                          />
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setFormData({ ...formData, image: '' })
+                            setImagePreview('')
+                          }}
+                          className="mt-2 text-sm text-red-600 hover:text-red-800"
+                        >
+                          Remove Image
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div>
@@ -288,9 +391,10 @@ export default function Admin() {
                         price: '',
                         quantity: '',
                         image: '',
-                        category: '',
+                        category: 'Fragrance',
                         specifications: '',
                       })
+                      setImagePreview('')
                     }}
                     className="px-8 py-3 bg-gray-300 text-gray-900 rounded-lg font-semibold hover:bg-gray-400 transition-all duration-300"
                   >
@@ -304,7 +408,20 @@ export default function Admin() {
           {/* Add Product Button */}
           {!showAddForm && (
             <button
-              onClick={() => setShowAddForm(true)}
+              onClick={() => {
+                setEditingProduct(null)
+                setFormData({
+                  name: '',
+                  description: '',
+                  price: '',
+                  quantity: '',
+                  image: '',
+                  category: 'Fragrance',
+                  specifications: '',
+                })
+                setImagePreview('')
+                setShowAddForm(true)
+              }}
               className="mb-8 px-8 py-3 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gold transition-all duration-300"
             >
               + Add New Product

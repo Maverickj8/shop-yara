@@ -18,7 +18,7 @@ export default function About() {
           >
             <img
               src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&h=800&fit=crop"
-              alt="Beauty Products"
+              alt="Luxury Fragrances and Accessories"
               className="w-full h-full object-cover"
             />
           </motion.div>
@@ -35,24 +35,21 @@ export default function About() {
               About Shop Yara
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed">
-              Welcome to Shop Yara, your premier destination for beauty, cosmetics, and personal care products. 
-              We are passionate about helping you look and feel your absolute best. Our carefully curated collection 
-              features premium skincare essentials, luxurious fragrances, high-quality makeup products, and nourishing 
-              body care items.
+              Welcome to Shop Yara—your premier destination for luxury fragrances and premium accessories in Lagos, Nigeria.
+              We curate signature scents, elegant gift-ready sets, and thoughtful add-ons that elevate your everyday and
+              special occasions.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed">
-              With years of expertise in the beauty industry, we understand that every individual has unique needs. 
-              That's why we offer a diverse range of products suitable for all skin types and preferences. From 
-              anti-aging serums to long-lasting perfumes, from matte foundations to hydrating body butters, 
-              we have everything you need to create your perfect beauty routine.
+              Whether you love deep oud notes, soft florals, or warm vanilla layers, our collection helps you find the
+              perfect fragrance match. Pair it with travel atomizers, storage trays, and luxury packaging accessories to
+              complete your experience.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed">
-              At Shop Yara, we believe that beauty is not just about appearance—it's about confidence, self-care, 
-              and feeling amazing in your own skin. Our mission is to provide you with products that enhance your 
-              natural beauty while maintaining the highest standards of quality and affordability.
+              At Shop Yara, we believe scent is confidence. Our mission is to deliver premium, authentic fragrance
+              experiences with beautiful accessories—backed by quality, care, and fast service.
             </p>
             <Link
-              href="#products"
+              href="/products"
               className="inline-block px-8 py-3 bg-gray-900 text-white rounded-full font-semibold hover:bg-gold transition-all duration-300 transform hover:scale-105"
             >
               Read More

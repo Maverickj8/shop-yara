@@ -61,7 +61,7 @@ export default function Navbar() {
               About Us
             </Link>
             <Link
-              href="#products"
+              href="/products"
               className={`transition-colors hover:text-gold ${
                 isScrolled ? 'text-gray-700' : 'text-white'
               }`}
@@ -69,7 +69,7 @@ export default function Navbar() {
               Shop Online
             </Link>
             <Link
-              href="#products"
+              href="/products"
               className={`transition-colors hover:text-gold ${
                 isScrolled ? 'text-gray-700' : 'text-white'
               }`}
@@ -175,14 +175,14 @@ export default function Navbar() {
               About Us
             </Link>
             <Link
-              href="#products"
+              href="/products"
               className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Shop Online
             </Link>
             <Link
-              href="#products"
+              href="/products"
               className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
               onClick={() => setIsMobileMenuOpen(false)}
             >

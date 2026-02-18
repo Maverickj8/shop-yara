@@ -5,23 +5,23 @@ import { motion } from 'framer-motion'
 const blogPosts = [
   {
     id: 1,
-    title: '10 Skincare Tips for Glowing Skin',
-    excerpt: 'Discover expert tips and tricks to achieve radiant, healthy skin that glows from within.',
-    image: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&h=600&fit=crop',
+    title: 'How to Choose Your Signature Scent',
+    excerpt: 'A simple guide to fragrance families—find the notes that match your mood, style, and lifestyle.',
+    image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&h=600&fit=crop',
     date: 'March 15, 2024',
   },
   {
     id: 2,
-    title: 'How to Choose the Perfect Perfume',
-    excerpt: 'Learn how to select fragrances that complement your personality and last all day long.',
-    image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&h=600&fit=crop',
+    title: 'Layering 101: Make Your Perfume Last Longer',
+    excerpt: 'Learn smart layering tips with mists and eau de parfum for longer wear and better projection.',
+    image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=800&h=600&fit=crop',
     date: 'March 10, 2024',
   },
   {
     id: 3,
-    title: 'Makeup Trends for 2024',
-    excerpt: 'Stay ahead of the curve with the latest makeup trends and techniques for this year.',
-    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&h=600&fit=crop',
+    title: 'Fragrance Accessories You Actually Need',
+    excerpt: 'From travel atomizers to storage trays—upgrade your fragrance routine with elegant essentials.',
+    image: 'https://images.unsplash.com/photo-1585386959984-a41552231693?w=800&h=600&fit=crop',
     date: 'March 5, 2024',
   },
 ]
@@ -38,10 +38,10 @@ export default function Blog() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Beauty Blog
+            Fragrance Blog
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Stay updated with the latest beauty tips and trends
+            Tips, trends, and guides for fragrances and accessories
           </p>
         </motion.div>
 

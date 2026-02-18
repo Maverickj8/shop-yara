@@ -12,7 +12,7 @@ export default function Footer() {
           <div>
             <h3 className="text-2xl font-bold mb-4">Shop Yara</h3>
             <p className="text-gray-400 mb-4">
-              Beauty, Cosmetics & Personal Care
+              Luxury Fragrances & Accessories
             </p>
             <div className="space-y-2 text-gray-400">
               <p className="flex items-center">
@@ -39,7 +39,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#products" className="text-gray-400 hover:text-gold transition-colors">
+                <Link href="/products" className="text-gray-400 hover:text-gold transition-colors">
                   Products
                 </Link>
               </li>
