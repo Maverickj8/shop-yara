@@ -17,7 +17,7 @@ export default function About() {
             className="relative h-96 md:h-[500px] rounded-lg overflow-hidden shadow-xl"
           >
             <img
-              src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&h=800&fit=crop"
+              src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&h=800&fit=crop&q=80"
               alt="Luxury Fragrances and Accessories"
               className="w-full h-full object-cover"
             />

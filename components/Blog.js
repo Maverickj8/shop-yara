@@ -1,32 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
-
-const blogPosts = [
-  {
-    id: 1,
-    title: 'How to Choose Your Signature Scent',
-    excerpt: 'A simple guide to fragrance families—find the notes that match your mood, style, and lifestyle.',
-    image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&h=600&fit=crop',
-    date: 'March 15, 2024',
-  },
-  {
-    id: 2,
-    title: 'Layering 101: Make Your Perfume Last Longer',
-    excerpt: 'Learn smart layering tips with mists and eau de parfum for longer wear and better projection.',
-    image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=800&h=600&fit=crop',
-    date: 'March 10, 2024',
-  },
-  {
-    id: 3,
-    title: 'Fragrance Accessories You Actually Need',
-    excerpt: 'From travel atomizers to storage trays—upgrade your fragrance routine with elegant essentials.',
-    image: 'https://images.unsplash.com/photo-1585386959984-a41552231693?w=800&h=600&fit=crop',
-    date: 'March 5, 2024',
-  },
-]
+import { useBlog } from '@/context/BlogContext'
 
 export default function Blog() {
+  const { articles } = useBlog()
   return (
     <section id="blog" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,7 +24,7 @@ export default function Blog() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
+          {articles.slice(0, 3).map((post, index) => (
             <motion.article
               key={post.id}
               initial={{ opacity: 0, y: 30 }}

@@ -1,6 +1,7 @@
 import './globals.css'
 import { CartProvider } from '@/context/CartContext'
 import { ProductProvider } from '@/context/ProductContext'
+import { BlogProvider } from '@/context/BlogContext'
 
 export const metadata = {
   title: 'Shop Yara - Premium Beauty Essentials',
@@ -12,9 +13,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <ProductProvider>
-          <CartProvider>
-            {children}
-          </CartProvider>
+          <BlogProvider>
+            <CartProvider>
+              {children}
+            </CartProvider>
+          </BlogProvider>
         </ProductProvider>
       </body>
     </html>
