@@ -7,6 +7,7 @@ import { useProducts } from '@/context/ProductContext'
 import { useCart } from '@/context/CartContext'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import ProductImage from '@/components/ProductImage'
 import { motion } from 'framer-motion'
 
 export default function ProductDetail() {
@@ -80,10 +81,12 @@ export default function ProductDetail() {
               className="relative"
             >
               <div className="aspect-square rounded-lg overflow-hidden shadow-xl">
-                <img
+                <ProductImage
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-full object-cover"
+                  gender={product.gender}
+                  category={product.category}
+                  className="w-full h-full"
                 />
               </div>
             </motion.div>
@@ -223,10 +226,12 @@ export default function ProductDetail() {
                     className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                   >
                     <div className="relative h-48 overflow-hidden">
-                      <img
+                      <ProductImage
                         src={relatedProduct.image}
                         alt={relatedProduct.name}
-                        className="w-full h-full object-cover"
+                        gender={relatedProduct.gender}
+                        category={relatedProduct.category}
+                        className="w-full h-full"
                       />
                     </div>
                     <div className="p-4">

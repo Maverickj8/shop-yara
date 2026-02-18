@@ -7,21 +7,24 @@ import { motion, AnimatePresence } from 'framer-motion'
 const slides = [
   {
     id: 1,
-    image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1920&h=1080&fit=crop',
-    headline: 'Glow With Confidence – Premium Beauty Essentials',
-    subtext: 'Discover luxury cosmetics, fragrances, and personal care products curated just for you.',
+    image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=1920&h=1080&fit=crop&q=80',
+    headline: 'Luxury Fragrances & Elegant Jewelry',
+    subtext: 'Discover our exquisite collection of premium perfumes and handcrafted jewelry, curated for the discerning taste.',
+    overlay: 'bg-pink-200/30',
   },
   {
     id: 2,
-    image: 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=1920&h=1080&fit=crop',
-    headline: 'Elevate Your Beauty Routine',
-    subtext: 'Premium quality products that enhance your natural beauty and boost your confidence.',
+    image: 'https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=1920&h=1080&fit=crop&q=80',
+    headline: 'Timeless Elegance in Every Bottle',
+    subtext: 'Experience the art of luxury perfumery with our signature fragrances, each crafted to perfection.',
+    overlay: 'bg-pink-200/30',
   },
   {
     id: 3,
-    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1920&h=1080&fit=crop',
-    headline: 'Luxury Meets Affordability',
-    subtext: 'Experience the finest beauty products without breaking the bank.',
+    image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1920&h=1080&fit=crop&q=80',
+    headline: 'Jewelry That Tells Your Story',
+    subtext: 'Adorn yourself with our stunning collection of jewelry, presented in luxurious velvet boxes.',
+    overlay: 'bg-pink-200/30',
   },
 ]
 
@@ -61,9 +64,12 @@ export default function Hero() {
         >
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
+            style={{ 
+              backgroundImage: `linear-gradient(to bottom, rgba(255, 228, 225, 0.4), rgba(255, 228, 225, 0.6)), url(${slides[currentSlide].image})`,
+              backgroundColor: '#FFE4E1'
+            }}
           >
-            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-pink-200/20" />
           </div>
         </motion.div>
       </AnimatePresence>

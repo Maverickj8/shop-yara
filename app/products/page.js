@@ -7,6 +7,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { useProducts } from '@/context/ProductContext'
 import { useCart } from '@/context/CartContext'
+import ProductImage from '@/components/ProductImage'
 
 export default function ProductsPage() {
   const { visibleProducts, allowedCategories, selectedCategory, setSelectedCategory } = useProducts()
@@ -82,10 +83,12 @@ export default function ProductsPage() {
                 >
                   <Link href={`/product/${product.id}`}>
                     <div className="relative h-64 overflow-hidden">
-                      <img
+                      <ProductImage
                         src={product.image}
                         alt={product.name}
-                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                        gender={product.gender}
+                        category={product.category}
+                        className="w-full h-full transition-transform duration-300 hover:scale-110"
                       />
                     </div>
                   </Link>

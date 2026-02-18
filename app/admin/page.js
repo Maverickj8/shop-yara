@@ -21,6 +21,7 @@ export default function Admin() {
     quantity: '',
     image: '',
     category: 'Fragrance',
+    gender: '',
     specifications: '',
   })
   const [imagePreview, setImagePreview] = useState('')
@@ -106,6 +107,7 @@ export default function Admin() {
       quantity: parseInt(formData.quantity),
       image: formData.image || imagePreview || 'https://via.placeholder.com/800',
       category: formData.category,
+      gender: formData.category === 'Fragrance' ? formData.gender : undefined,
       specifications: formData.specifications
         ? JSON.parse(formData.specifications)
         : {},
@@ -126,6 +128,7 @@ export default function Admin() {
       quantity: '',
       image: '',
       category: 'Fragrance',
+      gender: '',
       specifications: '',
     })
     setImagePreview('')
@@ -142,6 +145,7 @@ export default function Admin() {
       quantity: product.quantity.toString(),
       image: product.image,
       category: allowedCategories.includes(product.category) ? product.category : 'Fragrance',
+      gender: product.gender || '',
       specifications: JSON.stringify(product.specifications || {}, null, 2),
     })
     setImagePreview(product.image)
@@ -249,6 +253,24 @@ export default function Admin() {
                     </select>
                   </div>
                 </div>
+                {formData.category === 'Fragrance' && (
+                  <div>
+                    <label className="block text-gray-700 font-semibold mb-2">
+                      Gender *
+                    </label>
+                    <select
+                      name="gender"
+                      value={formData.gender}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-gold bg-white"
+                    >
+                      <option value="">Select Gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                  </div>
+                )}
                 <div>
                   <label className="block text-gray-700 font-semibold mb-2">
                     Description *
@@ -392,6 +414,7 @@ export default function Admin() {
                         quantity: '',
                         image: '',
                         category: 'Fragrance',
+                        gender: '',
                         specifications: '',
                       })
                       setImagePreview('')

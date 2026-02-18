@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useProducts } from '@/context/ProductContext'
 import { useCart } from '@/context/CartContext'
+import ProductImage from './ProductImage'
 
 export default function PopularProducts() {
   const { visibleProducts, selectedCategory, setSelectedCategory } = useProducts()
@@ -64,10 +65,12 @@ export default function PopularProducts() {
             >
               <Link href={`/product/${product.id}`}>
                 <div className="relative h-64 overflow-hidden">
-                  <img
+                  <ProductImage
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                    gender={product.gender}
+                    category={product.category}
+                    className="w-full h-full transition-transform duration-300 hover:scale-110"
                   />
                 </div>
               </Link>
