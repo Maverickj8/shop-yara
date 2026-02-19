@@ -15,7 +15,7 @@ const services = [
     id: 6,
     title: 'Accessories',
     description: 'Elegant add-ons for gifting, travel, and organizing your fragrance collection.',
-    image: 'https://images.unsplash.com/photo-1585386959984-a41552231693?w=600&h=600&fit=crop',
+    image: '/images/jewelry.jpg',
     category: 'Accessories',
   },
 ]

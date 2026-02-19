@@ -80,7 +80,7 @@ export default function Hero() {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-4xl md:text-6xl font-bold text-white mb-6"
+            className="text-4xl md:text-6xl font-bold text-slate-100 [text-shadow:2px_2px_5px_rgba(0,0,0,0.5)] mb-6"
           >
             {slides[currentSlide].headline}
           </motion.h1>
