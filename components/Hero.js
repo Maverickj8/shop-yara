@@ -7,17 +7,17 @@ import { motion, AnimatePresence } from 'framer-motion'
 const slides = [
   {
     id: 1,
-    image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=1920&h=1080&fit=crop&q=80',
+    image: '/images/time.jpg',
     headline: 'Luxury Fragrances & Elegant Jewelry',
     subtext: 'Discover our exquisite collection of premium perfumes and handcrafted jewelry, curated for the discerning taste.',
     overlay: 'bg-pink-200/30',
   },
   {
     id: 2,
-    image: 'https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=1920&h=1080&fit=crop&q=80',
+    image: '/images/men.jpg',
     headline: 'Timeless Elegance in Every Bottle',
     subtext: 'Experience the art of luxury perfumery with our signature fragrances, each crafted to perfection.',
-    overlay: 'bg-pink-200/30',
+    overlay: 'bg--200/30',
   },
   {
     id: 3,
@@ -69,7 +69,7 @@ export default function Hero() {
               backgroundColor: '#FFE4E1'
             }}
           >
-            <div className="absolute inset-0 bg-pink-200/20" />
+            <div className="absolute inset-0 bg-black-800/50" />
           </div>
         </motion.div>
       </AnimatePresence>
@@ -80,7 +80,7 @@ export default function Hero() {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-4xl md:text-6xl font-bold text-slate-100 [text-shadow:2px_2px_5px_rgba(0,0,0,0.5)] mb-6"
+            className="text-4xl md:text-6xl font-bold text-slate-100 mb-6"
           >
             {slides[currentSlide].headline}
           </motion.h1>
